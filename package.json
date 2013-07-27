@@ -1,6 +1,6 @@
 {
   "name": "grunt-extend",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extends JavaScript Objects with other JavaScript objects and tries to write them to a file.",
   "main": "Gruntfile.js",
   "scripts": {
