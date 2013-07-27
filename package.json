@@ -1,0 +1,23 @@
+{
+  "name": "grunt-extend",
+  "version": "0.0.1",
+  "description": "Extends JavaScript Objects with other JavaScript objects and tryies to write them to a file.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:grancalavera/grunt-extend.git"
+  },
+  "keywords": [
+    "grunt",
+    "json",
+    "configuration"
+  ],
+  "author": "El Gran Calavera",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/grancalavera/grunt-extend/issues"
+  }
+}
