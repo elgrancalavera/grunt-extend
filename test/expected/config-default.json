@@ -1,0 +1,4 @@
+{
+    "coffee": true,
+    "options": ["a", "b", "c"]
+}

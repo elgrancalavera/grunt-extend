@@ -9,7 +9,6 @@
 'use strict';
 
 module.exports = function(grunt) {
-
   // Project configuration.
   grunt.initConfig({
     jshint: {
@@ -30,22 +29,35 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     extend: {
-      default_options: {
+      options: {
+        defaults: {
+          coffee: true,
+          options: ['a', 'b', 'c']
+        }
+      },
+      empty: {
         options: {
+          defaults: {}
         },
         files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+          'tmp/config-empty.json': []
+        }
       },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
+      defaultConfig: {
         files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+          'tmp/config-default.json': []
+        }
       },
+      extendedConfig: {
+        files: {
+          'tmp/config-base.json': ['.config-base.json']
+        }
+      },
+      multipleExtensions: {
+        files: {
+          'tmp/config-local.json': ['.config-base.json', '.config-local.json']
+        }
+      }
     },
 
     // Unit tests.

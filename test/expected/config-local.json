@@ -1,0 +1,12 @@
+{
+    "coffee": false,
+    "options": [],
+    "colours": {
+        "main": "#FF00FF",
+        "other": "blue"
+    },
+    "keys": {
+        "facebook": "xxxx",
+        "parse": "yyyy"
+    }
+}
