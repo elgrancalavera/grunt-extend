@@ -6,9 +6,9 @@ task attempts to `JSON.stringify(yourObject)` and write it to a file.
 
 Quite useful for:
 
-    - projects that generate multiple modules
-    - projects that share configuration values across multiple clients
-    - sharing configuration values across environments
+- projects that generate multiple modules
+- projects that share configuration values across multiple clients
+- sharing configuration values across environments
 
 
 
