@@ -35,6 +35,12 @@ module.exports = function(grunt) {
           options: ['a', 'b', 'c']
         }
       },
+      brokenNoFiles: {},
+      brokenNoDest: {
+        files: {
+          '': []
+        }
+      },
       empty: {
         options: {
           defaults: {}
@@ -57,6 +63,13 @@ module.exports = function(grunt) {
         files: {
           'tmp/config-local.json': ['.config-base.json', '.config-local.json']
         }
+      },
+      // just point to a non-existing file, useful for local configurations
+      // that might be added to .gitignore
+      optionalExtenstion: {
+        files: {
+          'tmp/config-optional.json': ['.config-base.json', '.config-optional.json']
+        }
       }
     },
 
@@ -78,6 +91,15 @@ module.exports = function(grunt) {
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   grunt.registerTask('test', ['clean', 'extend', 'nodeunit']);
+
+  // Run all non-broken extend tasks
+  grunt.registerTask('extend:working', [
+    'extend:empty',
+    'extend:defaultConfig',
+    'extend:extendedConfig',
+    'extend:multipleExtensions',
+    'extend:optionalExtenstion'
+  ]);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

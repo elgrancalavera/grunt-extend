@@ -10,15 +10,35 @@
 
 module.exports = function(grunt) {
 
+  var fail = function () {
+      grunt.fail.fatal('grunt-extend failed.');
+  };
+
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
   var pkg = grunt.file.readJSON('package.json');
-  grunt.registerMultiTask('extend', pkg.description, function() {
+  var desc = pkg.description;
+  grunt.registerMultiTask('extend', desc, function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       defaults: {}
     });
+
     grunt.verbose.writeflags(options, 'Options');
+    if (!this.files.length) {
+        grunt.log.error('All targets must specify at least one file.');
+        fail();
+    }
+
+    // Iterate over all specified file groups.
+    this.files.forEach(function(f) {
+        if (!f.dest) {
+            grunt.log.error('All targets must specify a destination file.');
+            fail();
+        }
+        // just write the empty files by now to allow all tests to fail
+        grunt.file.write(f.dest, '');
+    });
 
     // // Iterate over all specified file groups.
     // this.files.forEach(function(f) {
