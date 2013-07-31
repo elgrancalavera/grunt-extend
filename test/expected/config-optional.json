@@ -1,0 +1,8 @@
+{
+    "coffee": false,
+    "options": ["a", "b", "c"],
+    "colours": {
+        "main": "#FF00FF",
+        "other": "blue"
+    }
+}

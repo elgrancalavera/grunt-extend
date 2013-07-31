@@ -32,39 +32,18 @@ module.exports = function(grunt) {
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
-        if (!f.dest) {
-            grunt.log.error('All targets must specify a destination file.');
-            fail();
-        }
-        // just write the empty files by now to allow all tests to fail
-        grunt.file.write(f.dest, '');
+      if (!f.dest) {
+          grunt.log.error('All targets must specify a destination file.');
+          fail();
+      }
+      var data = [{}, options.defaults];
+      grunt.util._.each(f.src, function (filename) {
+        data.push(grunt.file.readJSON(filename));
+      });
+      data = grunt.util._.extend.apply(grunt.util._, data);
+      grunt.file.write(f.dest, JSON.stringify(data, null, 4));
+      grunt.log.writeln('File "' + f.dest + '" created.');
     });
-
-    // // Iterate over all specified file groups.
-    // this.files.forEach(function(f) {
-    //   // Concat specified files.
-    //   var src = f.src.filter(function(filepath) {
-    //     // Warn on and remove invalid source files (if nonull was set).
-    //     if (!grunt.file.exists(filepath)) {
-    //       grunt.log.warn('Source file "' + filepath + '" not found.');
-    //       return false;
-    //     } else {
-    //       return true;
-    //     }
-    //   }).map(function(filepath) {
-    //     // Read file source.
-    //     return grunt.file.read(filepath);
-    //   }).join(grunt.util.normalizelf(options.separator));
-
-    //   // Handle options.
-    //   src += options.punctuation;
-
-    //   // Write the destination file.
-    //   grunt.file.write(f.dest, src);
-
-    //   // Print a success message.
-    //   grunt.log.writeln('File "' + f.dest + '" created.');
-    // });
   });
 
 };
