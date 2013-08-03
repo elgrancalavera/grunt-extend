@@ -76,7 +76,7 @@ grunt.initConfig({
 ```
 
 #### Generate a JSON file from default options
-This example uses the default options specified in `options.defaults` and write
+This example uses the default options specified in `options.defaults` and writes
 them to a JSON file:
 ```js
 grunt.initConfig({
@@ -97,8 +97,8 @@ grunt.initConfig({
 ```
 
 #### Extend the default options using one or more JSON files
-Finally, it is also possible to extend the default options with one or more JSON
-files, and write the results to a new JSON file:
+It is possible to extend the default options with one or more JSON files, and
+write the results to a new JSON file:
 ```js
 grunt.initConfig({
   extend: {
@@ -118,7 +118,7 @@ grunt.initConfig({
 ```
 
 #### Multiple targets
-This task is a mult-task, so you can specify multiple targets. Default options can
+Extend is a mult-task, so you can specify multiple targets. Default options can
 be overridden in individual targets:
 ```js
 grunt.initConfig({
