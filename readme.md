@@ -52,8 +52,8 @@ Default value: `{}`
 
 A JavaScript Object used as the base object in the extension chain. Setting
 `options.defaults` as a property of the task will make all of the targets share
-the same default options. Setting 'options.defaults' on any target will override
-the task's default options.
+the same default options. Setting `options.defaults` inside a target will override
+the task's default options for that target.
 
 ### Usage Examples
 
@@ -73,7 +73,7 @@ grunt.initConfig({
     }
   }
 });
-'''
+```
 
 #### Generate a JSON file from default options
 This example uses the default options specified in `options.defaults` and write
@@ -115,6 +115,7 @@ grunt.initConfig({
     }
   }
 });
+```
 
 #### Multiple targets
 This task is a mult-task, so you can specify multiple targets. Default options can
@@ -175,6 +176,7 @@ grunt.initConfig({
     }
   }
 });
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
