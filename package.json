@@ -1,6 +1,6 @@
 {
   "name": "grunt-extend",
-  "description": "Extends JavaScript Objects with other JavaScript objects and tries to write them to a file.",
+  "description": "Extends JavaScript Objects and JSON files with other JSON files, and writes them to a new JSON file.",
   "version": "0.1.0",
   "homepage": "https://github.com/grancalavera/grunt-extend",
   "author": {
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/grancalavera/grunt-extend.git"
+    "url": "git://github.com/elgrancalavera/grunt-extend.git"
   },
   "bugs": {
-    "url": "https://github.com/grancalavera/grunt-extend/issues"
+    "url": "https://github.com/elgrancalavera/grunt-extend/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/grancalavera/grunt-extend/blob/master/LICENSE-MIT"
+      "url": "https://github.com/elgrancalavera/grunt-extend/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -31,8 +31,7 @@
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.1"
+    "grunt-contrib-nodeunit": "~0.2.0"
   },
   "peerDependencies": {
     "grunt": "~0.4.1"
