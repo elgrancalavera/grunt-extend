@@ -1,6 +1,6 @@
-# grunt-extend
+# grunt-extend [![Build Status](https://travis-ci.org/elgrancalavera/grunt-extend.png?branch=master)](https://travis-ci.org/elgrancalavera/grunt-extend)
 
-> The best Grunt plugin ever.
+> Extends JavaScript Objects and JSON files with other JSON files, and writes them to a new JSON file
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -18,6 +18,15 @@ grunt.loadNpmTasks('grunt-extend');
 ```
 
 ## The "extend" task
+This task extends JavaScript Objects and JSON files with other JSON files, using
+`_.extend()` internally (notice grunt uses lodash internally). Once the final object
+is created, the resulting object is written to a new JSON file.
+
+Possible uses include:
+
+- projects that generate multiple clients
+- projects that share configuration values across multiple clients
+- sharing base configuration values across environments
 
 ### Overview
 In your project's Gruntfile, add a section named `extend` to the data object passed into `grunt.initConfig()`.
@@ -37,50 +46,135 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.defaults
+Type: `Object`
+Default value: `{}`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+A JavaScript Object used as the base object in the extension chain. Setting
+`options.defaults` as a property of the task will make all of the targets share
+the same default options. Setting 'options.defaults' on any target will override
+the task's default options.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  extend: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
+#### Generate an empty JSON file
+The basic usage example is using an empty object as the default options and write
+it to a JSON file:
 ```js
 grunt.initConfig({
   extend: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      defaults: {}
     },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    empty: {
+      files: {
+        'tmp/config-empty.json': []
+      }
+    }
+  }
+});
+'''
+
+#### Generate a JSON file from default options
+This example uses the default options specified in `options.defaults` and write
+them to a JSON file:
+```js
+grunt.initConfig({
+  extend: {
+    options: {
+      defaults: {
+        coffee: true,
+        options: ['a', 'b', 'c']
+      }
     },
-  },
-})
+    defaultConfig: {
+      files: {
+        'tmp/config-default.json': []
+      }
+    }
+  }
+});
 ```
+
+#### Extend the default options using one or more JSON files
+Finally, it is also possible to extend the default options with one or more JSON
+files, and write the results to a new JSON file:
+```js
+grunt.initConfig({
+  extend: {
+    options: {
+      defaults: {
+        coffee: true,
+        options: ['a', 'b', 'c']
+      }
+    },
+    extendedConfig: {
+      files: {
+        'tmp/config-base.json': ['.config-base.json']
+      }
+    }
+  }
+});
+
+#### Multiple targets
+This task is a mult-task, so you can specify multiple targets. Default options can
+be overridden in individual targets:
+```js
+grunt.initConfig({
+  extend: {
+    options: {
+      defaults: {
+        coffee: true,
+        options: ['a', 'b', 'c']
+      }
+    },
+    empty: {
+      options: {
+        defaults: {}
+      },
+      files: {
+        'tmp/config-empty.json': []
+      }
+    },
+    defaultConfig: {
+      files: {
+        'tmp/config-default.json': []
+      }
+    },
+    extendedConfig: {
+      files: {
+        'tmp/config-base.json': ['.config-base.json']
+      }
+    },
+    multipleExtensions: {
+      files: {
+        'tmp/config-local.json': ['.config-base.json', '.config-local.json']
+      }
+    }
+  }
+});
+```
+
+#### Single target and multiple files
+It is also possible to generate multiple files using a single target:
+```js
+grunt.initConfig({
+  extend: {
+    options: {
+      defaults: {
+        coffee: true,
+        options: ['a', 'b', 'c']
+      }
+    },
+    allEnvironments: {
+      files: {
+        'tmp/config-default.json': [],
+        'tmp/config-base.json': ['.config-base.json'],
+        'tmp/config-local.json': ['.config-base.json', '.config-local.json']
+      }
+    }
+  }
+});
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
