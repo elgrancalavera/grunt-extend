@@ -1,11 +1,11 @@
 {
   "name": "grunt-extend",
   "description": "Extends JavaScript Objects and JSON files with other JSON files, and writes them to a new JSON file.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/grancalavera/grunt-extend",
   "author": {
-    "name": "Leon Coto",
-    "email": "leoncoto@gmail.com",
+    "name": "El Gran Calavera",
+    "email": "grancalavera@gmail.com",
     "url": "grancalavera.com"
   },
   "repository": {
