@@ -35,12 +35,6 @@ module.exports = function(grunt) {
           options: ['a', 'b', 'c']
         }
       },
-      brokenNoFiles: {},
-      brokenNoDest: {
-        files: {
-          '': []
-        }
-      },
       empty: {
         options: {
           defaults: {}
@@ -88,18 +82,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  // Run all non-broken extend tasks
-  grunt.registerTask('extend:working', [
-    'extend:empty',
-    'extend:defaultConfig',
-    'extend:extendedConfig',
-    'extend:multipleExtensions',
-    'extend:optionalExtenstion'
-  ]);
-
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'extend:working', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'extend', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
