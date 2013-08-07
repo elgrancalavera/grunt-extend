@@ -180,6 +180,7 @@ grunt.initConfig({
 
 #### Deep extend
 In order to extend and object deeply, add `deep` to the targets options:
+```js
 grunt.initConfig({
   extend: {
     deep: true,
