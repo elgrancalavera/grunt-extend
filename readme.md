@@ -19,7 +19,7 @@ grunt.loadNpmTasks('grunt-extend');
 
 ## The "extend" task
 This task extends JavaScript Objects and JSON files with other JSON files, using
-`_.extend()` internally (notice grunt uses lodash internally). Once the final object
+`$.extend()` internally. Once the final object
 is created, the resulting object is written to a new JSON file.
 
 Possible uses include:
@@ -178,8 +178,30 @@ grunt.initConfig({
 });
 ```
 
+#### Deep extend
+In order to extend and object deeply, add `deep` to the targets options:
+grunt.initConfig({
+  extend: {
+    deep: true,
+    options: {
+      defaults: {
+        coffee: true,
+        options: ['a', 'b', 'c']
+      }
+    },
+    extendedConfig: {
+      files: {
+        'tmp/config-base.json': ['.config-base.json']
+      }
+    }
+  }
+});
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+ * 2013-08-07   v0.2.2   Support for deep extends.
+ * 2013-08-03   v0.2.1   Initial release.
  * 2013-08-03   v0.2.0   Initial release.
