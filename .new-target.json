@@ -1,0 +1,9 @@
+{
+    "options": [],
+    "keys": {
+        "facebook": "xxxx",
+        "parse": "yyyy"
+    },
+    "windows": false,
+    "anArray": ["foo"]
+}

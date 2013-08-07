@@ -7,7 +7,7 @@
  */
 
 'use strict';
-
+var $ = require('jquery');
 module.exports = function(grunt) {
 
   var fail = function () {
@@ -37,10 +37,17 @@ module.exports = function(grunt) {
           fail();
       }
       var data = [{}, options.defaults];
+      if (options.deep) {
+        data.unshift(true);
+      }
+
+      grunt.verbose.writeflags(options, 'opts:');
+      grunt.verbose.writeflags(data, 'args:');
+
       grunt.util._.each(f.src, function (filename) {
         data.push(grunt.file.readJSON(filename));
       });
-      data = grunt.util._.extend.apply(grunt.util._, data);
+      data = $.extend.apply($, data);
       grunt.file.write(f.dest, JSON.stringify(data, null, 4));
       grunt.log.writeln('File "' + f.dest + '" created.');
     });

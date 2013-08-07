@@ -42,5 +42,8 @@ exports.extend = {
   },
   optional: function (test) {
     compare('config-optional.json', test);
+  },
+  deep: function (test) {
+    compare('config-deep.json', test);
   }
 };

@@ -64,6 +64,18 @@ module.exports = function(grunt) {
         files: {
           'tmp/config-optional.json': ['.config-base.json', '.config-optional.json']
         }
+      },
+      extendDeep: {
+        options: {
+          deep: true,
+          defaults: {
+            coffee: false,
+            options: []
+          }
+        },
+        files: {
+          'tmp/config-deep.json': ['.config-base.json', '.config-local.json', '.config-deep.json']
+        }
       }
     },
 
