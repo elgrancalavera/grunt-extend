@@ -40,8 +40,5 @@
     "gruntplugin",
     "json",
     "configuration"
-  ],
-  "dependencies": {
-    "jquery": "~1.8.3"
-  }
+  ]
 }
