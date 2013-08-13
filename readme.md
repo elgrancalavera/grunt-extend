@@ -18,8 +18,8 @@ grunt.loadNpmTasks('grunt-extend');
 ```
 
 ## The "extend" task
-This task extends JavaScript Objects and JSON files with other JSON files, using
-`$.extend()` internally. Once the final object
+This task extends JavaScript Objects and JSON files with other JSON files, using Lo-Dash
+[`_.extend()`](http://lodash.com/docs#assign) and [`_.merge()`](http://lodash.com/docs#merge) internally. Once the final object
 is created, the resulting object is written to a new JSON file.
 
 Possible uses include:
