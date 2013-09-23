@@ -183,8 +183,8 @@ In order to extend and object deeply, add `deep` to the targets options:
 ```js
 grunt.initConfig({
   extend: {
-    deep: true,
     options: {
+      deep: true,
       defaults: {
         coffee: true,
         options: ['a', 'b', 'c']
@@ -193,6 +193,23 @@ grunt.initConfig({
     extendedConfig: {
       files: {
         'tmp/config-base.json': ['.config-base.json']
+      }
+    }
+  }
+});
+```
+
+#### CommonJS `require`-able extend
+In order to extend CommonJS modules, add `require` to the targets options and reference `.js` files:
+```js
+grunt.initConfig({
+  extend: {
+    options: {
+      require: true
+    },
+    extendedConfig: {
+      files: {
+        'tmp/config-base.js': ['.config-base.js']
       }
     }
   }
