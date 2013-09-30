@@ -220,7 +220,8 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
- * 2013-08-13   v0.4.1   Removing jQuery as a dependency.
- * 2013-08-07   v0.3.0   Support for deep extends.
- * 2013-08-03   v0.2.1   Initial release.
- * 2013-08-03   v0.2.0   Initial release.
+ * 2013-09-38   v0.4.2   Fixing error in documentation.
+ * 2013-08-13   v0.4.1   Removing jQuery as a dependency.
+ * 2013-08-07   v0.3.0   Support for deep extends.
+ * 2013-08-03   v0.2.1   Initial release.
+ * 2013-08-03   v0.2.0   Initial release.
