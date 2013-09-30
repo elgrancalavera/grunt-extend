@@ -199,6 +199,23 @@ grunt.initConfig({
 });
 ```
 
+#### CommonJS `require`-able extend
+In order to extend CommonJS modules, add `require` to the targets options and reference `.js` files:
+```js
+grunt.initConfig({
+  extend: {
+    options: {
+      require: true
+    },
+    extendedConfig: {
+      files: {
+        'tmp/config-base.js': ['.config-base.js']
+      }
+    }
+  }
+});
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 

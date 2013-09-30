@@ -42,7 +42,11 @@ module.exports = function(grunt) {
       grunt.verbose.writeflags(data, 'args:');
 
       grunt.util._.each(f.src, function (filename) {
-        data.push(grunt.file.readJSON(filename));
+        if (options.require && /\.js$/.test(filename)) {
+          data.push(require(process.cwd() +'/' + filename));
+        } else {
+          data.push(grunt.file.readJSON(filename));
+        }
       });
 
       if (options.deep) {
@@ -51,7 +55,14 @@ module.exports = function(grunt) {
         data = grunt.util._.extend.apply(grunt.util._, data);
       }
 
-      grunt.file.write(f.dest, JSON.stringify(data, null, 4));
+      if (options.require) {
+        var src = "module.exports = (function() {\n\tvar self = "
+                + require("toSrc")(data, 4)
+                + ";\n\treturn self;\n})();";
+        grunt.file.write(f.dest, src);
+      } else {
+        grunt.file.write(f.dest, JSON.stringify(data, null, 4));
+      }
       grunt.log.writeln('File "' + f.dest + '" created.');
     });
   });
