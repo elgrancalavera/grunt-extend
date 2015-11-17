@@ -16,9 +16,7 @@ module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
-  var pkg = grunt.file.readJSON('package.json');
-  var desc = pkg.description;
-  grunt.registerMultiTask('extend', desc, function() {
+  grunt.registerMultiTask('extend', 'Extends JavaScript Objects and JSON files and writes new JSON file', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       defaults: {}
